@@ -1,0 +1,120 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: rgb(255, 255, 255);
+
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 160px); 
+    margin-top: 20px;
+}
+
+.form-box {
+    width: 300px;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.form-box h1,
+.form-box h2 {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 24px; 
+}
+
+.form-box h1 {
+    position: absolute;
+    margin: 0;
+    top: -30px;
+    left: 0;
+    right: 0;
+    text-align: center;
+}
+
+form label {
+    font-weight: bold;
+}
+
+form input[type="text"],
+form input[type="password"] {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+button[type="submit"] {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    width: calc(100% - 22px);
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
+}
+
+.password-img {
+    position: absolute;
+    top: 520px; 
+    right: 925px; 
+    width: 50px; 
+    height: auto; 
+    z-index: 1; 
+    opacity: 0.5; 
+}
+
+.delete-img {
+    position: absolute;
+    top: 560px; 
+    right: 1230px; 
+    width: 30px; 
+    height: auto; 
+    z-index: 1; 
+    opacity: 0.5; 
+}
+body.background-image {
+    font-family: Arial, sans-serif;
+    background-image: url('01.jpg'); /* Arka plan resmi */
+    background-size: cover; /* Resmin ekran boyutuna otomatik olarak uyum sağlaması */
+    background-attachment: fixed; /* Arka planın sabitlenmesi */
+    opacity: 0.9; /* Opaklık değeri - istediğiniz değeri ayarlayabilirsiniz */
+    margin: 0;
+    padding: 0;
+}

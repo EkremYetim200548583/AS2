@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="stylee.css">
+    <style>
+      
+        .section-separator {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+        <body class="background-image">
+            <ul>
+                <li><a href="http://localhost/as1/as1.php">Register/Login</a></li>
+                
+            </ul>
+        </nav>
+        <img src="logo.jpg" alt="Company Logo">
+    </header>
+    <div class="login-box section-separator">
+    
+</div>
+
+<div class="change-password-box section-separator" id="change-password">
+   
+</div>
+
+
+<img src="ChangePassword.jpg" alt="Change Password" class="password-img">
+<img src="Delete.jpg" alt="Delete User" class="delete-img">
+
+    <main>
+        <div class="login-box section-separator">
+            <h1></h1>
+            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+    <label for="delete-username">User Name:</label>
+    <input type="text" name="delete-username" id="delete-username" required><br>
+    <button type="submit">Delete User</button>
+</form>
+        </div>
+
+        <div class="change-password-box section-separator" id="change-password">
+            <h1></h1>
+            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>#change-password" method="post">
+                <label for="change-username">User Name:</label>
+                <input type="text" name="change-username" id="change-username" required><br>
+                <label for="new-password">New Password:</label>
+                <input type="password" name="new-password" id="new-password" required><br>
+                <button type="submit">Change Password</button>
+            </form>
+        </div>
+
+        
+    </main>
+
+    <footer>
+        &copy; 2023 AS1 BANK
+    </footer>
+</body>
+<?php
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Delete 
+    if (isset($_POST['delete-username'])) {
+        $delete_username = $_POST['delete-username'];
+
+        $servername = "localhost:3306";
+        $db_username = "root";
+        $db_password = "Eko.115221";
+        $database = "contacts";
+
+        $conn = mysqli_connect($servername, $db_username, $db_password, $database);
+
+        if (!$conn) {
+            die("Connection failed: " . mysqli_connect_error());
+        } else {
+            $delete_sql = "DELETE FROM `as1` WHERE `username` = '$delete_username'";
+            $delete_result = mysqli_query($conn, $delete_sql);
+
+            if ($delete_result) {
+                echo "User deleted successfully";
+            } else {
+                echo "Error deleting user: " . mysqli_error($conn);
+            }
+        }
+    }
+
+    // Password
+    if (isset($_POST['change-username']) && isset($_POST['new-password'])) {
+        $change_username = $_POST['change-username'];
+        $new_password = $_POST['new-password'];
+
+        $servername = "localhost:3306";
+        $db_username = "root";
+        $db_password = "Eko.115221";
+        $database = "contacts";
+
+        $conn = mysqli_connect($servername, $db_username, $db_password, $database);
+
+        if (!$conn) {
+            die("Connection failed: " . mysqli_connect_error());
+        } else {
+            $update_sql = "UPDATE `as1` SET `password` = '$new_password' WHERE `username` = '$change_username'";
+            $update_result = mysqli_query($conn, $update_sql);
+
+            if ($update_result) {
+                echo "Password updated successfully";
+            } else {
+                echo "Error updating password: " . mysqli_error($conn);
+            }
+        }
+    }
+}
+?>
+
+
+</html>
